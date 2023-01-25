@@ -1,0 +1,37 @@
+{
+  "name": "language-code-service",
+  "version": "1.0.0",
+  "description": "NPM package to provide an interface for interacting with language codes supported by ISO 639-1 and ISO 639-3.",
+  "main": "build/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "npx tsc",
+    "test": "jest --coverage --runInBand"
+  },
+  "engines": {
+    "node": "16.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BYU-TRG-Team/language-code-service.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BYU-TRG-Team/language-code-service/issues"
+  },
+  "homepage": "https://github.com/BYU-TRG-Team/language-code-service#readme",
+  "devDependencies": {
+    "@types/node": "^18.8.5",
+    "@types/node-fetch": "^2.6.2",
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "@types/jest": "^29.2.6",
+    "babel-jest": "^29.3.1",
+    "jest": "^29.4.0",
+    "js": "^0.1.0",
+    "node-fetch": "^2.6.7",
+    "ts-jest": "^29.0.5"
+  }
+}

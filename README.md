@@ -1,2 +1,3 @@
-# langauge-code-service
-NPM package to provide an interface for interacting with language codes supported by ISO 639-1 and ISO 639-3/
+# Language Code Service
+
+Library for interfacing with ISO 643 language codes.
