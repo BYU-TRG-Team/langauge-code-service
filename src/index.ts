@@ -58,7 +58,7 @@ class LanguageCodeService {
     return matchedLanguages.length > 0 ? matchedLanguages[0] : null
   }
 
-  public getAllLanguages() {
+  public getAllLanguages(): Language[] {
     return this.languages
   }
 }
