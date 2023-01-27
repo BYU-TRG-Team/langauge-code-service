@@ -64,3 +64,4 @@ class LanguageCodeService {
 }
 
 export default LanguageCodeService
+export * from "./types"
