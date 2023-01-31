@@ -2,11 +2,12 @@
   "name": "@byu-trg/language-code-service",
   "version": "1.0.1",
   "description": "NPM package to provide an interface for interacting with language codes supported by ISO 639-1 and ISO 639-3.",
-  "main": "build/index.js",
-  "types": "build/index.d.ts",
+  "main": "commonjs/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "type": "module",
   "scripts": {
-    "build": "npx tsc",
+    "build": "npx tsc --project tsconfig.json; npx tsc --project tsconfig.commonjs.json; echo '{\"type\": \"commonjs\"}' > commonjs/package.json",
     "test": "jest --coverage --runInBand"
   },
   "engines": {
