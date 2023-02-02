@@ -1,13 +1,9 @@
-import { fetchLanguages } from "./helpers"
+import { languageRegistry } from "./data"
 import { Language, ParsedLangCode } from "./types"
 
 class LanguageCodeService {
-  private languages = new Array<Language>()
+  private languages = languageRegistry
   private BCP47Validator = new RegExp("^[a-zA-Z]{1,8}(-[a-zA-Z0-9]{1,8})*$")
-
-  public async init() {
-    this.languages = await fetchLanguages()
-  }
 
   public validateLangCode(langTag: string): { OK: boolean, error: string }  {
     const parsedLangTag = this.parseLangCode(langTag)
