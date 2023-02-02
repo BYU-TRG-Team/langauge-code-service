@@ -7,7 +7,6 @@
   },
   "testMatch": ["**/__tests__/*.test.ts"],
   "collectCoverage": true,
-  "coveragePathIgnorePatterns": ["/app/", "/RestTools/"],
   "collectCoverageFrom": ["src/**/*.ts"],
   "coverageThreshold": {
     "global": {

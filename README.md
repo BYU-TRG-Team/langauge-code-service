@@ -8,8 +8,6 @@ Library for interfacing with ISO 639 language codes.
 import LanguageCodeService from "language-code-service"
 
 const languageCodeService = new LanguageCodeService()
-
-await languageCodeService.init()
 ```
 
 ## Methods

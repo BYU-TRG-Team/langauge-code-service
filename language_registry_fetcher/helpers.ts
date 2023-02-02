@@ -1,8 +1,8 @@
 import fetch from "node-fetch";
 import { IANA_LANGUAGE_REGISTRY_URL, IANA_LANGUAGE_TAGS } from "./constants"
-import { Language } from "./types"
+import { Language } from "../src/types"
 
-export const fetchLanguages = async () => {
+export const retrieveLanguageRegistry = async () => {
   const languages = new Array<Language>()
     const rawLangRegistry = await (await fetch(IANA_LANGUAGE_REGISTRY_URL)).text()
 

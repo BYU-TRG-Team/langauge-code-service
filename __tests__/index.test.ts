@@ -1,12 +1,8 @@
 import LanguageCodeService from "../src/index"
-import { goldenLangCodes, goldenLanguage, goldenParsedLangCodes, malformedLanguage, unknownLanguage } from "./testData"
+import { goldenLangCodes, goldenLanguage, goldenParsedLangCodes, malformedLanguage, unknownLanguage } from "./test_data"
 
 describe("test getAllLanguages method", () => {
   const languageCodeService = new LanguageCodeService()
-  
-  beforeAll(async () => {
-    await languageCodeService.init()
-  })
 
   test("should return a list of one or more languages", async () => {
     expect(languageCodeService.getAllLanguages().length).toBeGreaterThanOrEqual(1)
@@ -15,10 +11,6 @@ describe("test getAllLanguages method", () => {
 
 describe("test getLanguage method", () => {
   const languageCodeService = new LanguageCodeService()
-  
-  beforeAll(async () => {
-    await languageCodeService.init()
-  })
 
   test("should return the correct data for the golden language", () => {
     const language = languageCodeService.getLanguage(goldenLanguage.tag)
@@ -40,10 +32,6 @@ describe("test getLanguage method", () => {
 
 describe("test validateLangCode method", () => {
   const languageCodeService = new LanguageCodeService()
-  
-  beforeAll(async () => {
-    await languageCodeService.init()
-  })
 
   test ("should return OK for all golden language codes", () => {
     goldenLangCodes.forEach(langCode => {
@@ -65,10 +53,6 @@ describe("test validateLangCode method", () => {
 
 describe("parseLangCode method", () => {
   const languageCodeService = new LanguageCodeService()
-  
-  beforeAll(async () => {
-    await languageCodeService.init()
-  })
 
   test ("should return valid data for all golden parsed language codes", () => {
     Object.keys(goldenParsedLangCodes).forEach(langCode => {
