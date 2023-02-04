@@ -2,8 +2,7 @@
   "preset": "ts-jest",
   "testEnvironment": "node",
   "transform": {
-    "^.+\\.ts?$": "ts-jest",
-    "^.+\\.(js)$": "babel-jest"
+    "^.+\\.ts?$": "ts-jest"
   },
   "testMatch": ["**/__tests__/*.test.ts"],
   "collectCoverage": true,
