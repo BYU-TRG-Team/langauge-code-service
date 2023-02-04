@@ -33,7 +33,7 @@ class LanguageCodeService {
       return null
     }
 
-    const subTags = langTag.split("-").map(subtag => subtag.toLowerCase());
+    const subTags = langTag.split("-")
     
     return {
       primarySubTag: subTags[0],
