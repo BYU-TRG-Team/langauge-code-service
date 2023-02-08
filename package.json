@@ -1,6 +1,6 @@
 {
   "name": "@byu-trg/language-code-service",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "NPM package to provide an interface for interacting with language codes supported by ISO 639-1 and ISO 639-3.",
   "main": "commonjs/index.js",
   "module": "dist/index.js",
