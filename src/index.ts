@@ -49,7 +49,8 @@ class LanguageCodeService {
       return null
     }
 
-    let matchedLanguages = this.languages.filter((language) => language.tag == parsedLangTag.primarySubTag)
+    const primarySubTag = parsedLangTag.primarySubTag.toLowerCase()
+    let matchedLanguages = this.languages.filter((language) => language.tag.toLowerCase() === primarySubTag)
 
     return matchedLanguages.length > 0 ? matchedLanguages[0] : null
   }
