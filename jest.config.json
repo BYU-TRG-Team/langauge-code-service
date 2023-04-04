@@ -15,12 +15,7 @@
       "statements": 0
     }
   },
-  "moduleNameMapper": {
-    "^@$": "<rootDir>/src",
-    "^@data$": "<rootDir>/src/data",
-    "^@types$": "<rootDir>/src/types",
-    "^@language_registry_fetcher/(.*)$": "<rootDir>/src/language_registry_fetcher/$1"
-  },
+
   "coverageReporters": ["json", "html"],
   "reporters": ["default"]
 }

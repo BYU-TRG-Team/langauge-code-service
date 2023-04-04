@@ -7,16 +7,9 @@
   "types": "dist/index.d.ts",
   "type": "module",
   "scripts": {
-    "build:commonjs": "tsc --project tsconfig.commonjs.json && resolve-tspaths --project tsconfig.commonjs.json  && echo '{\"type\": \"commonjs\"}' > commonjs/package.json",
-    "build:es6": "tsc --project tsconfig.json && resolve-tspaths --project tsconfig.json",
-    "build:all": "npm run build:es6 && npm run build:commonjs",
-    "build": "npm run build:all",
-    "language-registry:fetch": "node dist/language_registry_fetcher/index.js",
-    "language-registry:update-cache": "chmod 700 ./bin/export_language_registry_to_cache_file && ./bin/export_language_registry_to_cache_file",
-    "test": "jest --coverage",
-    "lint": "eslint src --ext .ts",
-    "lint:fix": "eslint src --ext .ts --fix",
-    "prepare": "husky install"
+    "build": "npx tsc --project tsconfig.json; npx tsc --project tsconfig.commonjs.json; echo '{\"type\": \"commonjs\"}' > commonjs/package.json",
+    "test": "jest --coverage --runInBand",
+    "refresh": "(cd language_registry_fetcher; npm --prefix ./ run build; node .)"
   },
   "engines": {
     "node": "16.x"
@@ -32,19 +25,14 @@
   },
   "homepage": "https://github.com/BYU-TRG-Team/language-code-service#readme",
   "devDependencies": {
-    "@types/jest": "^29.2.6",
     "@types/node": "^18.8.5",
     "@types/node-fetch": "^2.6.2",
-    "husky": "^8.0.3",
+    "@types/jest": "^29.2.6",
+    "typescript": "^4.8.4",
     "jest": "^29.4.0",
-    "ts-jest": "^29.0.5",
-    "typescript": "^4.8.4"
+    "ts-jest": "^29.0.5"
   },
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.57.0",
-    "@typescript-eslint/parser": "^5.57.0",
-    "eslint": "^8.37.0",
-    "node-fetch": "^2.6.7",
-    "resolve-tspaths": "^0.8.8"
+    "node-fetch": "^2.6.7"
   }
 }
