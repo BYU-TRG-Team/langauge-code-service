@@ -1,41 +1,35 @@
 # Language Code Service
 
-Library for interfacing with ISO 639 language codes.
+Library for interfacting with the IANA Language Subtag Registry.
+
+The IANA Language Subtag Registry is not fetched in real time and is instead cached within the library upon every release. 
 
 ## Usage
 
 ```
-import LanguageCodeService from "language-code-service"
+import LanguageCodeService from "language-code-service";
 
-const languageCodeService = new LanguageCodeService()
+const languageCodeService = new LanguageCodeService();
 ```
 
 ## Methods
-
 ```
-# Needs to be called during initialization to load languages from the IANA Language Subtag Registry
-
-async init()
-```
-
-```
-# Validates that a language code follows BCP 47 format and that the primary subtag exists in the IANA Language Subtag Registry
+# Validates that a given language code conforms to BCP 47 and that the primary subtag exists in the IANA Language Subtag Registry.
 
 validateLangCode(langTag: string): { OK: boolean, error: string }
 ```
 
 ```
-# Parses the subtags for a given language code
+# Returns subtags for a given language code.
 
-parseLangCode(langTag: string): (ParsedLangCode | {
+parseLangCode(langTag: string): (null | {
   primarySubTag: string,
   extendedSubTags: string[]
 })
 ```
 
-
 ```
-# Retrieves a language from the IANA Language Subtag Registry
+# Retrieves a language using a given language code. The primary subtag of the language code will be used to query the IANA Language Subtag Registry.
 
 getLanguage(langTag: string): {
   tag: string;
@@ -44,7 +38,7 @@ getLanguage(langTag: string): {
 ```
 
 ```
-# Retrieves all languages from the IANA Language Subtag Registry
+# Retrieves all languages from the IANA Language Subtag Registry.
 
 getAllLanguages(): {
   tag: string;
