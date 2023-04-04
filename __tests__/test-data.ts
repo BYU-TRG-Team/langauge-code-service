@@ -1,19 +1,19 @@
-import { Language, ParsedLangCode } from "../src/types"
+import { Language, ParsedLangCode } from "@types";
 
 export const malformedLanguage: Language = {
   tag: "!GD2w@5&9ExiH0*JfIWN@v9w9%r3gjNT",
   description: ""
-}
+};
 
 export const unknownLanguage: Language = {
   tag: "zazazaza",
   description: ""
-}
+};
 
 export const goldenLanguage: Language = { 
   tag: "es", 
   description: "Spanish/Castilian" 
-}
+};
 
 export const goldenLangCodes = [
   "af",
@@ -140,7 +140,7 @@ export const goldenLangCodes = [
   "xh",
   "ji",
   "zu"
-]
+];
 
 export const goldenParsedLangCodes: {[key: string]: ParsedLangCode} = {
   "af": {
@@ -175,4 +175,4 @@ export const goldenParsedLangCodes: {[key: string]: ParsedLangCode} = {
     primarySubTag: "ar",
     extendedSubTags: ["kw"]
   },
-}
+};
