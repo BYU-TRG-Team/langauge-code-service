@@ -8,9 +8,26 @@
     "strict": true, 
     "noUnusedLocals": false,
     "moduleResolution": "node",
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "esModuleInterop": true,
     "declaration": true,  
+    "paths": {
+      "@": [
+        "./src"
+      ],
+      "@data": [
+        "./src/data"
+      ],
+      "@types": [
+        "./src/types"
+      ],
+      "@language_registry_fetcher/*": [
+        "./src/language_registry_fetcher/*"
+      ],
+      "@tests/*": [
+        "./__tests__/*"
+      ]
+    }
   },
   "include": [
     "src/**/*"
