@@ -1,5 +1,10 @@
 __tests__/
-.github/
-src/
 coverage/
-language_registry_fetcher/
+.github/
+.husky/
+src/
+.eslintrc
+.gitignore
+jest.config.json
+tsconfig.commonjs.json
+tsconfig.json
