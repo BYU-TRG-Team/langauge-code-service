@@ -9,7 +9,7 @@ TIMESTAMP=$(date -u)
 readonly TIMESTAMP
 
 cat << EOF > "${CACHE_FILE}"
-import { Language } from "@types";
+import { Language } from "@typings";
 
 // ${TIMESTAMP}
 export const languageRegistry: Language[] = ${LANG_REGISTRY};

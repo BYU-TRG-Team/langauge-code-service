@@ -1,4 +1,4 @@
-import { retrieveLanguageRegistry } from "@language_registry_fetcher/helpers";
+import { retrieveLanguageRegistry } from "@language-registry-fetcher/helpers";
 
 const exportLanguageRegistryToStdOut = async () => {
   const languages = await retrieveLanguageRegistry();

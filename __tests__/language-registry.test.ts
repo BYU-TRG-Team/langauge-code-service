@@ -1,4 +1,4 @@
-import { retrieveLanguageRegistry } from  "@language_registry_fetcher/helpers";
+import { retrieveLanguageRegistry } from  "@language-registry-fetcher/helpers";
 
 describe("test retrieveLanguageRegistry method", () => {
   test("should return a list of one or more languages", async () => {

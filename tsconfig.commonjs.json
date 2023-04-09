@@ -9,6 +9,7 @@
     "noUnusedLocals": false,
     "moduleResolution": "node",
     "baseUrl": ".",
+    "rootDir": ".",
     "esModuleInterop": true,
     "declaration": true,  
     "paths": {
@@ -21,11 +22,11 @@
       "@typings": [
         "./src/types"
       ],
-      "@language_registry_fetcher": [
-        "./src/language_registry_fetcher"
+      "@language-registry-fetcher": [
+        "./src/language-registry-fetcher"
       ],
-      "@language_registry_fetcher/*": [
-        "./src/language_registry_fetcher/*"
+      "@language-registry-fetcher/*": [
+        "./src/language-registry-fetcher/*"
       ],
       "@tests/*": [
         "./__tests__/*"
