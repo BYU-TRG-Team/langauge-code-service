@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 import { IANA_LANGUAGE_REGISTRY_URL, IANA_LANGUAGE_TAGS } from "@language_registry_fetcher/constants";
-import { Language } from "@types";
+import { Language } from "@typings";
 
 export const retrieveLanguageRegistry = async () => {
   const languages = new Array<Language>();

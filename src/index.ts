@@ -1,5 +1,5 @@
 import { languageRegistry } from "@data";
-import { Language, ParsedLangCode } from "@types";
+import { Language, ParsedLangCode } from "@typings";
 
 class LanguageCodeService {
   private languages = languageRegistry;

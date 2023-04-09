@@ -18,8 +18,11 @@
       "@data": [
         "./src/data"
       ],
-      "@types": [
+      "@typings": [
         "./src/types"
+      ],
+      "@language_registry_fetcher": [
+        "./src/language_registry_fetcher"
       ],
       "@language_registry_fetcher/*": [
         "./src/language_registry_fetcher/*"
