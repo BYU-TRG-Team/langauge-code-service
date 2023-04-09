@@ -19,8 +19,8 @@
     "^@$": "<rootDir>/src",
     "^@data$": "<rootDir>/src/data",
     "^@typings$": "<rootDir>/src/types",
-    "^@language_registry_fetcher$": "<rootDir>/src/language_registry_fetcher",
-    "^@language_registry_fetcher/(.*)$": "<rootDir>/src/language_registry_fetcher/$1",
+    "^@language-registry-fetcher$": "<rootDir>/src/language-registry-fetcher",
+    "^@language-registry-fetcher/(.*)$": "<rootDir>/src/language-registry-fetcher/$1",
     "^@tests/(.*)$": "<rootDir>/__tests__/$1"
   },
   "coverageReporters": ["json", "html"],
