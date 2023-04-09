@@ -1,14 +1,14 @@
 {
   "name": "@byu-trg/language-code-service",
   "version": "1.1.6",
-  "description": "NPM package to provide an interface for interacting with language codes supported by ISO 639-1 and ISO 639-3.",
+  "description": "Library for interfacting with the IANA Language Subtag Registry.",
   "main": "commonjs/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "type": "module",
   "scripts": {
-    "build:commonjs": "tsc --project tsconfig.commonjs.json && resolve-tspaths --project tsconfig.commonjs.json  && echo '{\"type\": \"commonjs\"}' > commonjs/package.json",
-    "build:es6": "tsc --project tsconfig.json && resolve-tspaths --project tsconfig.json",
+    "build:commonjs": "rm -rf commonjs/ && tsc --project tsconfig.commonjs.json && resolve-tspaths --project tsconfig.commonjs.json && echo '{\"type\": \"commonjs\"}' > commonjs/package.json",
+    "build:es6": "rm -rf dist/ && tsc --project tsconfig.json && resolve-tspaths --project tsconfig.json",
     "build:all": "npm run build:es6 && npm run build:commonjs",
     "build": "npm run build:all",
     "language-registry:fetch": "node dist/language_registry_fetcher/index.js",
