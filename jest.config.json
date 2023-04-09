@@ -18,7 +18,8 @@
   "moduleNameMapper": {
     "^@$": "<rootDir>/src",
     "^@data$": "<rootDir>/src/data",
-    "^@types$": "<rootDir>/src/types",
+    "^@typings$": "<rootDir>/src/types",
+    "^@language_registry_fetcher$": "<rootDir>/src/language_registry_fetcher",
     "^@language_registry_fetcher/(.*)$": "<rootDir>/src/language_registry_fetcher/$1",
     "^@tests/(.*)$": "<rootDir>/__tests__/$1"
   },

@@ -1,4 +1,4 @@
-import { Language, ParsedLangCode } from "@types";
+import { Language, ParsedLangCode } from "@typings";
 
 export const malformedLanguage: Language = {
   tag: "!GD2w@5&9ExiH0*JfIWN@v9w9%r3gjNT",
