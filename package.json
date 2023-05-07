@@ -14,8 +14,8 @@
     "language-registry:fetch": "node dist/src/language-registry-fetcher/index.js",
     "language-registry:update-cache": "chmod 700 ./bin/export_language_registry_to_cache_file && ./bin/export_language_registry_to_cache_file",
     "test": "jest --coverage",
-    "lint": "eslint src --ext .ts",
-    "lint:fix": "eslint src --ext .ts --fix",
+    "lint": "eslint src __tests__ --ext .ts",
+    "lint:fix": "eslint src __tests__ --ext .ts --fix",
     "prepare": "husky install"
   },
   "engines": {
