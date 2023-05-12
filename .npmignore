@@ -1,10 +1,13 @@
 __tests__/
-coverage/
 .github/
 .husky/
+bin/
+coverage/
+node_modules/
 src/
 .eslintrc
 .gitignore
 jest.config.json
+README.md
 tsconfig.commonjs.json
 tsconfig.json
