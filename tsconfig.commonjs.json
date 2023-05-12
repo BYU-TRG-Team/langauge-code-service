@@ -1,37 +1,8 @@
 {
+  "extends": "./tsconfig.json",
   "compilerOptions": {
-    "target": "ES6", 
-    "module": "CommonJS", 
-    "resolveJsonModule": true,
-    "sourceMap": true, 
-    "outDir": "./commonjs", 
-    "strict": true, 
-    "noUnusedLocals": false,
-    "moduleResolution": "node",
-    "baseUrl": ".",
-    "rootDir": ".",
-    "esModuleInterop": true,
-    "declaration": true,  
-    "paths": {
-      "@": [
-        "./src"
-      ],
-      "@data": [
-        "./src/data"
-      ],
-      "@typings": [
-        "./src/types"
-      ],
-      "@language-registry-fetcher": [
-        "./src/language-registry-fetcher"
-      ],
-      "@language-registry-fetcher/*": [
-        "./src/language-registry-fetcher/*"
-      ],
-      "@tests/*": [
-        "./__tests__/*"
-      ]
-    }
+    "module": "CommonJS",
+    "outDir": "./commonjs"
   },
   "include": [
     "src/**/*"
