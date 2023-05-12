@@ -1,10 +1,12 @@
 #!/bin/bash
 
-LANG_REGISTRY=$(npm run --silent language-registry:fetch)
-readonly LANG_REGISTRY
 SCRIPT_DIR=$(dirname -- "$( readlink -f -- "$0"; )")
 readonly SCRIPT_DIR
-CACHE_FILE="${SCRIPT_DIR}"/../src/data.ts
+PACKAGE_DIR=$(realpath "${SCRIPT_DIR}/..")
+readonly PACKAGE_DIR
+LANG_REGISTRY=$(node "${PACKAGE_DIR}"/dist/src/language-registry-fetcher/index.js)
+readonly LANG_REGISTRY
+declare -r CACHE_FILE="${PACKAGE_DIR}"/src/data.ts
 TIMESTAMP=$(date -u)
 readonly TIMESTAMP
 
