@@ -1,6 +1,6 @@
 # Language Code Service
 
-Library for interfacting with the IANA Language Subtag Registry.
+Library for interfacing with the IANA Language Subtag Registry.
 
 The IANA Language Subtag Registry is not fetched in real time and is instead cached within the library upon every release. 
 

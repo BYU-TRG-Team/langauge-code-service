@@ -1,7 +1,7 @@
 {
   "name": "@byu-trg/language-code-service",
   "version": "1.1.7",
-  "description": "Library for interfacting with the IANA Language Subtag Registry.",
+  "description": "Library for interfacing with the IANA Language Subtag Registry.",
   "main": "commonjs/src/index.js",
   "module": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
