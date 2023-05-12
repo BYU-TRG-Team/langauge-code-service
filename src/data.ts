@@ -1,6 +1,6 @@
 import { Language } from "@typings";
 
-// Fri May 12 06:27:11 UTC 2023
+// Fri May 12 06:44:36 UTC 2023
 export const languageRegistry: Language[] = [
   { tag: "aa", description: "Afar" },
   { tag: "ab", description: "Abkhazian" },
