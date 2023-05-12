@@ -1,14 +1,17 @@
 import fetch from "node-fetch";
-import { IANA_LANGUAGE_REGISTRY_URL, IANA_LANGUAGE_TAGS } from "@language-registry-fetcher/constants";
+import { IANA_LANGUAGE_REGISTRY_URL } from "@language-registry-fetcher/constants";
+import { IANA_LANGUAGE_TAG } from "@language-registry-fetcher/types";
 import { Language } from "@typings";
 
 export const retrieveLanguageRegistry = async () => {
   const languages = new Array<Language>();
-  const rawLangRegistry = await (await fetch(IANA_LANGUAGE_REGISTRY_URL)).text();
+  const rawLangRegistry = await (
+    await fetch(IANA_LANGUAGE_REGISTRY_URL)
+  ).text();
 
   rawLangRegistry
     .split("%%")
-    .filter((blob) => blob.includes(`${IANA_LANGUAGE_TAGS.Type}: language`) && !blob.includes(`${IANA_LANGUAGE_TAGS.Scope}: private-use`))
+    .filter((blob) => blob.includes(`${IANA_LANGUAGE_TAG.Type}: language`) && !blob.includes(`${IANA_LANGUAGE_TAG.Scope}: private-use`))
     .forEach((blob) => {
       const language = {
         tag: "",
@@ -18,11 +21,11 @@ export const retrieveLanguageRegistry = async () => {
 
       let index = 0;
       while (index < blobSections.length) {
-        if (blobSections[index] === IANA_LANGUAGE_TAGS.Description) {
+        if (blobSections[index] === IANA_LANGUAGE_TAG.Description) {
           let description = "";
           index += 1;
             
-          while (index < blobSections.length && !(blobSections[index] in IANA_LANGUAGE_TAGS)) {
+          while (index < blobSections.length && !(blobSections[index] in IANA_LANGUAGE_TAG)) {
             description += blobSections[index];
             index += 1;
           }
@@ -32,11 +35,11 @@ export const retrieveLanguageRegistry = async () => {
           }
 
           language.description += description.trim();
-        } else if (blobSections[index] === IANA_LANGUAGE_TAGS.Subtag) {
+        } else if (blobSections[index] === IANA_LANGUAGE_TAG.Subtag) {
           let tag = "";
           index += 1;
             
-          while (index < blobSections.length && !(blobSections[index] in IANA_LANGUAGE_TAGS)) {
+          while (index < blobSections.length && !(blobSections[index] in IANA_LANGUAGE_TAG)) {
             tag += blobSections[index];
             index += 1;
           }
