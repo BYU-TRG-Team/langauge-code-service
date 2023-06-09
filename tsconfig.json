@@ -19,6 +19,9 @@
       "@data": [
         "./src/data"
       ],
+      "@language": [
+        "./src/language"
+      ],
       "@typings": [
         "./src/types"
       ],

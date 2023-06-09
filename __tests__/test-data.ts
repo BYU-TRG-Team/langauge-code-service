@@ -1,178 +1,42 @@
-import { Language, ParsedLangCode } from "@typings";
+import Language from "@language";
+import { IANALanguage } from "@typings";
 
-export const malformedLanguage: Language = {
-  tag: "!GD2w@5&9ExiH0*JfIWN@v9w9%r3gjNT",
-  description: ""
-};
-
-export const unknownLanguage: Language = {
-  tag: "zazazaza",
-  description: ""
-};
-
-export const goldenLanguage: Language = { 
+export const TEST_MALFORMED_LANG_TAG = "en!";
+export const TEST_UNKNOWN_LANG_TAG = "fr";
+export const TEST_ES_GOLDEN_IANA_LANGUAGE: IANALanguage = { 
   tag: "es", 
   description: "Spanish/Castilian" 
 };
-
-export const goldenLangCodes = [
-  "af",
-  "sq",
-  "ar-dz",
-  "ar-bh",
-  "ar-eg",
-  "ar-iq",
-  "ar-jo",
-  "ar-kw",
-  "ar-lb",
-  "ar-ly",
-  "ar-ma",
-  "ar-om",
-  "ar-qa",
-  "ar-sa",
-  "ar-sy",
-  "ar-tn",
-  "ar-ae",
-  "ar-ye",
-  "eu",
-  "be",
-  "bg",
-  "ca",
-  "zh-hk",
-  "zh-cn",
-  "zh-sg",
-  "zh-tw",
-  "hr",
-  "cs",
-  "da",
-  "nl-be",
-  "nl",
-  "en",
-  "en-au",
-  "en-bz",
-  "en-ca",
-  "en-ie",
-  "en-jm",
-  "en-nz",
-  "en-za",
-  "en-tt",
-  "en-gb",
-  "en-us",
-  "et",
-  "fo",
-  "fa",
-  "fi",
-  "fr-be",
-  "fr-ca",
-  "fr-lu",
-  "fr",
-  "fr-ch",
-  "gd",
-  "de-at",
-  "de-li",
-  "de-lu",
-  "de",
-  "de-ch",
-  "el",
-  "he",
-  "hi",
-  "hu",
-  "is",
-  "id",
-  "ga",
-  "it",
-  "it-ch",
-  "ja",
-  "ko",
-  "ko",
-  "ku",
-  "lv",
-  "lt",
-  "mk",
-  "ml",
-  "ms",
-  "mt",
-  "no",
-  "nb",
-  "nn",
-  "pl",
-  "pt-br",
-  "pt",
-  "pa",
-  "rm",
-  "ro",
-  "ro-md",
-  "ru",
-  "ru-md",
-  "sr",
-  "sk",
-  "sl",
-  "es-ar",
-  "es-bo",
-  "es-cl",
-  "es-co",
-  "es-cr",
-  "es-do",
-  "es-ec",
-  "es-sv",
-  "es-gt",
-  "es-hn",
-  "es-mx",
-  "es-ni",
-  "es-pa",
-  "es-py",
-  "es-pe",
-  "es-pr",
-  "es",
-  "es-uy",
-  "es-ve",
-  "sv",
-  "sv-fi",
-  "th",
-  "ts",
-  "tn",
-  "tr",
-  "uk",
-  "ur",
-  "ve",
-  "vi",
-  "cy",
-  "xh",
-  "ji",
-  "zu"
-];
-
-export const goldenParsedLangCodes: {[key: string]: ParsedLangCode} = {
-  "af": {
-    primarySubTag: "af",
-    extendedSubTags: []
-  },
-  "sq": {
-    primarySubTag: "sq",
-    extendedSubTags: []
-  },
-  "ar-dz": {
-    primarySubTag: "ar",
-    extendedSubTags: ["dz"]
-  },
-  "ar-bh": {
-    primarySubTag: "ar",
-    extendedSubTags: ["bh"]
-  },
-  "ar-eg": {
-    primarySubTag: "ar",
-    extendedSubTags: ["eg"]
-  },
-  "ar-iq": {
-    primarySubTag: "ar",
-    extendedSubTags: ["iq"]
-  },
-  "ar-jo": {
-    primarySubTag: "ar",
-    extendedSubTags: ["jo"]
-  },
-  "ar-kw": {
-    primarySubTag: "ar",
-    extendedSubTags: ["kw"]
-  },
+export const TEST_EN_GOLDEN_IANA_LANGUAGE: IANALanguage = { 
+  tag: "en", 
+  description: "English" 
 };
+export const TEST_ES_GOLDEN_LANGUAGE: Language = new Language(
+  {
+    primary: "es",
+    extended: []
+  },
+  "Spanish/Castilian" 
+);
+export const TEST_EN_GOLDEN_LANGUAGE: Language = new Language(
+  {
+    primary: "en",
+    extended: []
+  },
+  "English"  
+);
+export const TEST_IANA_LANGUAGE_REGISTRY_RESPONSE = `
+%%
+Type: language
+Subtag: es
+Description: Spanish
+Description: Castilian
+Added: 2005-10-16
+Suppress-Script: Latn
+%%
+Type: language
+Subtag: en
+Description: English
+Added: 2005-10-16
+Suppress-Script: Latn
+`;

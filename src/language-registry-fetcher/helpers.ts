@@ -1,10 +1,10 @@
 import fetch from "node-fetch";
 import { IANA_LANGUAGE_REGISTRY_URL } from "@language-registry-fetcher/constants";
 import { IANA_LANGUAGE_TAG } from "@language-registry-fetcher/types";
-import { Language } from "@typings";
+import { IANALanguage } from "@typings";
 
 export const retrieveLanguageRegistry = async () => {
-  const languages = new Array<Language>();
+  const languages = new Array<IANALanguage>();
   const rawLangRegistry = await (
     await fetch(IANA_LANGUAGE_REGISTRY_URL)
   ).text();
@@ -16,7 +16,7 @@ export const retrieveLanguageRegistry = async () => {
       const language = {
         tag: "",
         description: "",
-      } as Language;
+      } as IANALanguage;
       const blobSections = blob.split(/:|\n/);
 
       let index = 0;
