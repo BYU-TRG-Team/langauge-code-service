@@ -1,6 +1,6 @@
 import { IANALanguage } from "@typings";
 
-// Fri May 12 06:44:36 UTC 2023
+// Sat Jun 10 05:14:27 UTC 2023
 export const languageRegistry: IANALanguage[] = [
   { tag: "aa", description: "Afar" },
   { tag: "ab", description: "Abkhazian" },
