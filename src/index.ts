@@ -1,64 +1,52 @@
 import { languageRegistry } from "@data";
-import { Language, ParsedLangCode } from "@typings";
+import { IANA_LANGUAGE_REGISTRY_URL } from "@language-registry-fetcher/constants";
+import { IANALanguage, Subtags } from "@typings";
+import Language from "@language";
 
-class LanguageCodeService {
-  private languages = languageRegistry;
-  private BCP47Validator = new RegExp("^[a-zA-Z]{1,8}(-[a-zA-Z0-9]{1,8})*$");
+const BCP47Validator = new RegExp("^[a-zA-Z]{1,8}(-[a-zA-Z0-9]{1,8})*$");
 
-  public validateLangCode(langTag: string): { OK: boolean, error: string }  {
-    const parsedLangTag = this.parseLangCode(langTag);
+/** 
+ * Retrieves all languages from the IANA Language Subtag Registry.
+ */
+export const getAllLanguages = (): IANALanguage[] => languageRegistry;
 
-    if (parsedLangTag == null) {
-      return {
-        OK: false,
-        error: `Error: Language tag "${langTag}" does not follow BCP 47 format.`
-      };
-    }
-
-    if (this.getLanguage(langTag) == null) {
-      return {
-        OK: false,
-        error: `Error: Language subtag "${parsedLangTag.primarySubTag}" does not exist in the IANA Language Subtag Registry\nPlease see https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry for supported subtags.`
-      };
-    }
-
-    return {
-      OK: true,
-      error: ""
-    };
+/** 
+ * Retrieves a language using a provided language tag. 
+ * 
+ * The primary subtag of the provided language tag will be used to query the IANA Language Subtag Registry. 
+ * Extended subtags will be derived from the provided language tag.
+ *
+ * Errors will be thrown if the provided language tag does not follow BCP 47 format or if its primary subtag does not exist in the IANA Language Subtag Registry.
+ */
+export const getLanguage = (langTag: string): Language => {
+  if (!BCP47Validator.test(langTag)) {
+    throw new Error(`
+      Error: Language tag "${langTag}" does not follow BCP 47 format.
+    `);
   }
 
-  public parseLangCode(langTag: string): (ParsedLangCode | null) {
-    if (!this.BCP47Validator.test(langTag)) {
-      return null;
-    }
+  const subtags: Subtags = langTag.split("-").map(subTag => subTag.toLowerCase()).reduce<Subtags>((prev, curr, index) => ({
+    primary: index === 0 ? curr : prev.primary,
+    extended: index === 0 ? prev.extended : [...prev.extended, curr]
+  }), {
+    primary: "",
+    extended: []
+  });
 
-    const subTags = langTag.split("-");
-    
-    return {
-      primarySubTag: subTags[0],
-      extendedSubTags: subTags.slice(1, subTags.length + 1)
-    };
+  const matchedLanguage = languageRegistry.find((language) => language.tag === subtags.primary);
 
-  }
-  
-  public getLanguage(langTag: string): Language | null {
-    const parsedLangTag = this.parseLangCode(langTag);
+  if (matchedLanguage === undefined) {
+    throw new Error(`
+      Error: Language subtag "${subtags.primary}" does not exist in the IANA Language Subtag Registry
 
-    if (parsedLangTag == null) {
-      return null;
-    }
-
-    const primarySubTag = parsedLangTag.primarySubTag.toLowerCase();
-    const matchedLanguages = this.languages.filter((language) => language.tag.toLowerCase() === primarySubTag);
-
-    return matchedLanguages.length > 0 ? matchedLanguages[0] : null;
+      Please see ${IANA_LANGUAGE_REGISTRY_URL} for supported subtags.
+    `);
   }
 
-  public getAllLanguages(): Language[] {
-    return this.languages;
-  }
-}
+  return new Language(
+    subtags,
+    matchedLanguage.description
+  );
+};
 
-export default LanguageCodeService;
 export * from "./types";

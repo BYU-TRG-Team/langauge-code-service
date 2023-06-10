@@ -4,44 +4,46 @@ Library for interfacing with the IANA Language Subtag Registry.
 
 The IANA Language Subtag Registry is not fetched in real time and is instead cached within the library upon every release. 
 
-## Usage
+## Types
 
 ```
-import LanguageCodeService from "language-code-service";
+interface IANALanguage {
+  tag: string,
+  description: string
+}
+```
 
-const languageCodeService = new LanguageCodeService();
+```
+interface Subtags {
+  primary: string;
+  extended: string[];
+}
+```
+
+```
+class Language {
+  readonly subtags: Subtags;
+  readonly description: string;
+  get tag(): string;
+}
 ```
 
 ## Methods
-```
-# Validates that a given language code conforms to BCP 47 and that the primary subtag exists in the IANA Language Subtag Registry.
-
-validateLangCode(langTag: string): { OK: boolean, error: string }
-```
 
 ```
-# Returns subtags for a given language code.
-
-parseLangCode(langTag: string): (null | {
-  primarySubTag: string,
-  extendedSubTags: string[]
-})
+/** 
+ * Retrieves all languages from the IANA Language Subtag Registry.
+ */
+getAllLanguages(): IANALanguage[]
 ```
-
 ```
-# Retrieves a language using a given language code. The primary subtag of the language code will be used to query the IANA Language Subtag Registry.
-
-getLanguage(langTag: string): {
-  tag: string;
-  description: string
-} | null
-```
-
-```
-# Retrieves all languages from the IANA Language Subtag Registry.
-
-getAllLanguages(): {
-  tag: string;
-  description: string
-}[]
+/** 
+ * Retrieves a language using a provided language tag. 
+ * 
+ * The primary subtag of the provided language tag will be used to query the IANA Language Subtag Registry. 
+ * Extended subtags will be derived from the provided language tag.
+ *
+ * Errors will be thrown if the provided language tag does not follow BCP 47 format or if its primary subtag does not exist in the IANA Language Subtag Registry.
+ */
+getLanguage = (langTag: string): Language
 ```

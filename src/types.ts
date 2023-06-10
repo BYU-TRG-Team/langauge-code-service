@@ -1,9 +1,9 @@
-export interface Language {
+export interface IANALanguage {
   tag: string;
-  description: string
+  description: string;
 }
 
-export interface ParsedLangCode {
-  primarySubTag: string,
-  extendedSubTags: string[]
+export interface Subtags {
+  primary: string;
+  extended: string[];
 }

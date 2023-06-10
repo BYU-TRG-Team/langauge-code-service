@@ -1,7 +1,7 @@
-import { Language } from "@typings";
+import { IANALanguage } from "@typings";
 
 // Fri May 12 06:44:36 UTC 2023
-export const languageRegistry: Language[] = [
+export const languageRegistry: IANALanguage[] = [
   { tag: "aa", description: "Afar" },
   { tag: "ab", description: "Abkhazian" },
   { tag: "ae", description: "Avestan" },

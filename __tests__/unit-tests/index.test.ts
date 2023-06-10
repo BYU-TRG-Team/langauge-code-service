@@ -1,79 +1,40 @@
-import LanguageCodeService from "@";
+import {
+  getAllLanguages,
+  getLanguage,
+} from "@";
+
 import { 
-  goldenLangCodes, 
-  goldenLanguage, 
-  goldenParsedLangCodes, 
-  malformedLanguage, 
-  unknownLanguage 
+  TEST_EN_GOLDEN_IANA_LANGUAGE,
+  TEST_ES_GOLDEN_IANA_LANGUAGE,
+  TEST_ES_GOLDEN_LANGUAGE,
+  TEST_MALFORMED_LANG_TAG,
+  TEST_UNKNOWN_LANG_TAG,
 } from "@tests/test-data";
 
-describe("test getAllLanguages method", () => {
-  const languageCodeService = new LanguageCodeService();
+jest.mock("@data");
 
-  test("should return a list of one or more languages", async () => {
-    expect(languageCodeService.getAllLanguages().length).toBeGreaterThanOrEqual(1);
+describe("test getAllLanguages method", () => {
+  test("should return a list of languages", async () => {
+    const languages = getAllLanguages();
+
+    expect(languages.length).toStrictEqual(2);
+    expect(languages).toContainEqual(TEST_EN_GOLDEN_IANA_LANGUAGE);
+    expect(languages).toContainEqual(TEST_ES_GOLDEN_IANA_LANGUAGE);
   });
 });
 
 describe("test getLanguage method", () => {
-  const languageCodeService = new LanguageCodeService();
-
-  test("should return the correct data for the golden language", () => {
-    const language = languageCodeService.getLanguage(goldenLanguage.tag);
+  test("should return the correct data for a golden language", () => {
+    const language = getLanguage(TEST_ES_GOLDEN_LANGUAGE.tag);
   
-    expect(language?.tag).toBe(goldenLanguage.tag);
-    expect(language?.description).toBe(goldenLanguage.description); 
+    expect(language).toEqual(TEST_ES_GOLDEN_LANGUAGE);
   });
 
-  test("should return null for malformed language", () => {
-    const language = languageCodeService.getLanguage(malformedLanguage.tag);
-    expect(language).toBeNull();
+  test("should throw an error for a malformed lang tag", () => {
+    expect(() => getLanguage(TEST_MALFORMED_LANG_TAG)).toThrowError();
   });
 
-  test("should return null for unknown language", () => {
-    const language = languageCodeService.getLanguage(unknownLanguage.tag);
-    expect(language).toBeNull();
-  });
-});
-
-describe("test validateLangCode method", () => {
-  const languageCodeService = new LanguageCodeService();
-
-  test ("should return OK for all golden language codes", () => {
-    goldenLangCodes.forEach(langCode => {
-      const validationResponse = languageCodeService.validateLangCode(langCode);
-      expect(validationResponse.OK).toBeTruthy();
-    });
-  });
-
-  test("should return null for malformed language", () => {
-    const validationResponse = languageCodeService.validateLangCode(malformedLanguage.tag);
-    expect(validationResponse.OK).toBeFalsy();
-  });
-
-  test("should return null for unknown language", () => {
-    const validationResponse = languageCodeService.validateLangCode(unknownLanguage.tag);
-    expect(validationResponse.OK).toBeFalsy();
-  });
-});
-
-describe("parseLangCode method", () => {
-  const languageCodeService = new LanguageCodeService();
-
-  test ("should return valid data for all golden parsed language codes", () => {
-    Object.keys(goldenParsedLangCodes).forEach(langCode => {
-      const parsedLangCode = languageCodeService.parseLangCode(langCode);
-      expect(parsedLangCode).toStrictEqual(goldenParsedLangCodes[langCode]);
-    });
-  });
-
-  test("should return null for malformed language", () => {
-    const parsedLangCode = languageCodeService.parseLangCode(malformedLanguage.tag);
-    expect(parsedLangCode).toBeNull();
-  });
-
-  test("should return null for unknown language", () => {
-    const parsedLangCode = languageCodeService.parseLangCode(malformedLanguage.tag);
-    expect(parsedLangCode).toBeNull();
+  test("should throw an error for an unknown lang tag", () => {
+    expect(() => getLanguage(TEST_UNKNOWN_LANG_TAG)).toThrowError();
   });
 });
