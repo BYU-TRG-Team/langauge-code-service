@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../src/language-registry-fetcher/index.ts"],"names":[],"mappings":";;;;;;;;;AAAA,OAAO,EAAE,wBAAwB,EAAE,MAAM,oCAAoC,CAAC;AAE9E,MAAM,8BAA8B,GAAG,GAAS,EAAE;IAChD,MAAM,SAAS,GAAG,MAAM,wBAAwB,EAAE,CAAC;IAEnD,OAAO,CAAC,GAAG,CACT,SAAS,EAAE,EAAC,gBAAgB,EAAE,IAAI,EAAC,CACpC,CAAC;AACJ,CAAC,CAAA,CAAC;AAEF,8BAA8B,EAAE,CAAC"}
